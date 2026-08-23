@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iMyanTech - Smart Solutions</title>
+    <title>iMyanTech</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons (App Icons များအတွက်) -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -39,7 +39,7 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header & Logo */
         header {
             padding: 20px 0;
             display: flex;
@@ -52,51 +52,99 @@
             color: var(--text-dark);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 10px; /* စာသားနှင့် ပုံကြား အကွာအဝေး */
         }
-        .logo-text i { color: var(--primary-blue); }
+        
+        .header-logo-img {
+            height: 35px; /* Logo ပုံ အမြင့် */
+            width: auto;
+            object-fit: contain;
+        }
 
-        /* Hero Section */
-        .hero {
-            background-color: var(--light-blue);
+        /* Image Slider Styles (အသစ်) */
+        .hero-slider {
+            position: relative;
+            max-width: 100%;
+            height: 400px; /* Slider အမြင့် */
             border-radius: 20px;
-            padding: 60px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .slides {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ပုံမပြဲဘဲ နေရာအပြည့်ယူရန် */
+        }
+
+        /* Slider Navigation */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
-            overflow: hidden;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            pointer-events: none;
         }
 
-        .hero-content h1 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 15px;
+        .slider-nav button {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            pointer-events: all;
+            transition: 0.3s;
+            color: var(--text-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .hero-content h1 span {
-            color: var(--primary-blue);
-        }
-
-        .hero-content p {
-            color: var(--text-gray);
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .btn-primary {
+        .slider-nav button:hover {
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
+        }
+
+        /* Slider Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
             gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
             transition: 0.3s;
         }
-        .btn-primary:hover { opacity: 0.9; }
+
+        .dot.active {
+            background-color: var(--primary-blue);
+            width: 25px;
+            border-radius: 10px;
+        }
 
         /* Social Icons (Dropbox Images) */
         .social-top {
@@ -151,23 +199,19 @@
             border: 1px solid #f0f0f0;
         }
 
-        .app-icon {
-            width: 70px;
-            height: 70px;
+        /* App Icon ကို Dropbox ပုံပြောင်းရန် CSS */
+        .app-custom-img {
+            width: 75px;
+            height: 75px;
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            color: var(--white);
+            object-fit: cover;
             flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .app-details h3 { font-size: 18px; margin-bottom: 5px; }
         .app-category { font-size: 13px; color: var(--primary-blue); font-weight: 500; }
-        .app-stats { font-size: 13px; color: var(--text-gray); margin: 8px 0; }
-        .app-stats i { color: #FFC107; }
-        .app-desc { font-size: 14px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.5; }
+        .app-desc { font-size: 14px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.5; margin-top: 8px; }
         
         .view-store {
             color: var(--primary-blue);
@@ -277,8 +321,7 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding: 40px 20px; }
-            .hero-content h1 { font-size: 36px; }
+            .hero-slider { height: 250px; }
             .apps-grid, .team-grid, .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -286,21 +329,38 @@
 <body>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header (Logo ပုံကို ညာဘက်တွင်ထည့်ထားပါသည်) -->
         <header>
-            <div class="logo-text"><i class="fa-solid fa-layer-group"></i> iMyanTech</div>
+            <div class="logo-text">
+                iMyanTech
+                <img src="YOUR_HEADER_LOGO_DROPBOX_LINK?raw=1" alt="Logo" class="header-logo-img">
+            </div>
         </header>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Smart Solutions<br>For Your <span>Business</span></h1>
-                <p>Reliable, Fast & Easy to Use</p>
-                <a href="#our-apps" class="btn-primary">Explore Our Apps <i class="fa-solid fa-chevron-right"></i></a>
+        <!-- Image Slider Section -->
+        <section class="hero-slider">
+            <div class="slides">
+                <!-- ပုံ ၃ ပုံအတွက် Dropbox လင့်ခ်များ ထည့်ရန် -->
+                <div class="slide"><img src="YOUR_SLIDER_IMAGE_1_DROPBOX_LINK?raw=1" alt="Slider 1"></div>
+                <div class="slide"><img src="YOUR_SLIDER_IMAGE_2_DROPBOX_LINK?raw=1" alt="Slider 2"></div>
+                <div class="slide"><img src="YOUR_SLIDER_IMAGE_3_DROPBOX_LINK?raw=1" alt="Slider 3"></div>
+            </div>
+            
+            <!-- ဘယ်/ညာ ရွှေ့ရန် Button များ -->
+            <div class="slider-nav">
+                <button onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+                <button onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <!-- အောက်ခြေမှ အစက်လေးများ -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
             </div>
         </section>
 
-        <!-- Social Media Top (Dropbox Images ပြောင်းထားပါသည်) -->
+        <!-- Social Media Top (Dropbox Images) -->
         <section class="social-top">
             <a href="https://facebook.com/imyantech">
                 <img src="https://www.dropbox.com/scl/fi/mb1g87tz77vxbsbcq74x2/facebook.png?rlkey=4bpa2112sbxpsvwhz1hai1vgl&st=mgvredb4&raw=1" alt="Facebook" class="custom-icon-img">
@@ -321,9 +381,9 @@
             </div>
             
             <div class="apps-grid">
-                <!-- App 1 -->
+                <!-- App 1 (Dropbox Icon ပြောင်းထားပါသည်) -->
                 <div class="app-card">
-                    <div class="app-icon" style="background: #10B981;"><i class="fa-solid fa-cash-register"></i></div>
+                    <img src="YOUR_APP1_ICON_DROPBOX_LINK?raw=1" alt="UniPOS" class="app-custom-img">
                     <div class="app-details">
                         <h3>UniPOS</h3>
                         <span class="app-category">Business</span>
@@ -332,9 +392,9 @@
                     </div>
                 </div>
 
-                <!-- App 2 -->
+                <!-- App 2 (Dropbox Icon ပြောင်းထားပါသည်) -->
                 <div class="app-card">
-                    <div class="app-icon" style="background: #0056FF;"><i class="fa-solid fa-box"></i></div>
+                    <img src="YOUR_APP2_ICON_DROPBOX_LINK?raw=1" alt="MyParcel" class="app-custom-img">
                     <div class="app-details">
                         <h3>MyParcel</h3>
                         <span class="app-category">Productivity</span>
@@ -343,9 +403,9 @@
                     </div>
                 </div>
 
-                <!-- App 3 -->
+                <!-- App 3 (Dropbox Icon ပြောင်းထားပါသည်) -->
                 <div class="app-card">
-                    <div class="app-icon" style="background: #6366F1;"><i class="fa-solid fa-wallet"></i></div>
+                    <img src="YOUR_APP3_ICON_DROPBOX_LINK?raw=1" alt="Project A" class="app-custom-img">
                     <div class="app-details">
                         <h3>Project A</h3>
                         <span class="app-category">Unknown</span>
@@ -354,9 +414,9 @@
                     </div>
                 </div>
 
-                <!-- App 4 -->
+                <!-- App 4 (Dropbox Icon ပြောင်းထားပါသည်) -->
                 <div class="app-card">
-                    <div class="app-icon" style="background: #F97316;"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <img src="YOUR_APP4_ICON_DROPBOX_LINK?raw=1" alt="Project B" class="app-custom-img">
                     <div class="app-details">
                         <h3>Project B</h3>
                         <span class="app-category">Unknown</span>
@@ -367,7 +427,7 @@
             </div>
         </section>
 
-        <!-- Contact Us (Moved Above Our Team) -->
+        <!-- Contact Us -->
         <section id="contact">
             <div class="section-title">
                 <h2>Contact Us</h2>
@@ -375,7 +435,7 @@
             </div>
             
             <div class="contact-grid">
-                <!-- Sales (Dropbox Image ပြောင်းထားပါသည်) -->
+                <!-- Sales -->
                 <div class="contact-card">
                     <img src="https://www.dropbox.com/scl/fi/98tjcyronybjgzczfobux/sales.png?rlkey=01u9ioe4wax28a5jntan3l5hy&st=ck5iooby&raw=1" alt="Sales" class="contact-custom-img">
                     <div class="contact-info">
@@ -385,7 +445,7 @@
                     </div>
                 </div>
 
-                <!-- Developer (Dropbox Image ပြောင်းထားပါသည်) -->
+                <!-- Developer -->
                 <div class="contact-card">
                     <img src="https://www.dropbox.com/scl/fi/cfr4ocqvqd962upctrvfu/dev.png?rlkey=5j3cr76lrzdvkpgt7832eqx3e&st=3x7a5mvl&raw=1" alt="Developer" class="contact-custom-img">
                     <div class="contact-info">
@@ -397,7 +457,7 @@
             </div>
         </section>
 
-        <!-- Our Team (Moved Below Contact Us) -->
+        <!-- Our Team -->
         <section id="team">
             <div class="section-title">
                 <h2>Our Team</h2>
@@ -405,53 +465,38 @@
             </div>
             
             <div class="team-grid">
-                <!-- Developer (Dropbox Image ပြောင်းထားပါသည်) -->
                 <div class="team-card">
                     <img src="YOUR_MGMG_DROPBOX_LINK?raw=1" alt="Mg Mg" class="team-img">
                     <h3>Mg Mg</h3>
                     <span class="role">Lead Android Developer</span>
                     <p>Passionate about creating innovative solutions and building reliable software that helps businesses grow.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
-                        <a href="#"><i class="fa-brands fa-github"></i></a>
-                        <a href="#"><i class="fa-regular fa-envelope"></i></a>
-                    </div>
                 </div>
 
-                <!-- Sales & Marketing (Dropbox Image ပြောင်းထားပါသည်) -->
                 <div class="team-card">
                     <img src="YOUR_MINMIN_DROPBOX_LINK?raw=1" alt="Min Min" class="team-img">
                     <h3>Min Min</h3>
                     <span class="role">Sales & Marketing</span>
                     <p>Focus on building strong relationships with clients and delivering the best solutions.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
-                        <a href="#"><i class="fa-solid fa-phone"></i></a>
-                        <a href="#"><i class="fa-regular fa-envelope"></i></a>
-                    </div>
                 </div>
 
-                <!-- Designer (Dropbox Image ပြောင်းထားပါသည်) -->
                 <div class="team-card">
                     <img src="YOUR_KYAWKYAW_DROPBOX_LINK?raw=1" alt="Kyaw Kyaw" class="team-img">
                     <h3>Kyaw Kyaw</h3>
                     <span class="role">Graphics Designer</span>
                     <p>Creative designer focused on crafting clean and impactful visuals for brands and products.</p>
-                    <div class="team-social">
-                        <a href="#"><i class="fa-brands fa-dribbble"></i></a>
-                        <a href="#"><i class="fa-brands fa-behance"></i></a>
-                        <a href="#"><i class="fa-regular fa-envelope"></i></a>
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <div class="logo-text"><i class="fa-solid fa-layer-group"></i> iMyanTech</div>
+            <!-- Footer Logo နေရာတွင်လည်း ပြင်ဆင်ထားပါသည် -->
+            <div class="logo-text">
+                iMyanTech
+                <img src="YOUR_HEADER_LOGO_DROPBOX_LINK?raw=1" alt="Logo" class="header-logo-img">
+            </div>
             <p>We build smart and reliable applications that help businesses grow and make everyday tasks easier.</p>
             
-            <!-- Footer Social Icons (Dropbox Images ပြောင်းထားပါသည်) -->
             <div class="footer-social">
                 <a href="https://facebook.com/imyantech">
                     <img src="https://www.dropbox.com/scl/fi/mb1g87tz77vxbsbcq74x2/facebook.png?rlkey=4bpa2112sbxpsvwhz1hai1vgl&st=mgvredb4&raw=1" alt="Facebook" class="footer-icon-img">
@@ -470,6 +515,37 @@
         </footer>
     </div>
 
+    <!-- Image Slider အတွက် Javascript ကုဒ် -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelector('.slides');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function updateSlider() {
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            updateSlider();
+        }
+
+        // အလိုအလျောက် ၅ စက္ကန့်တစ်ခါ ပုံပြောင်းရန်
+        setInterval(nextSlide, 5000); 
+    </script>
+
 </body>
 </html>
-
