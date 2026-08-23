@@ -2,58 +2,467 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>iMyanTech - Android Software Development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iMyanTech - Smart Solutions</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #0056FF;
+            --light-blue: #F0F6FF;
+            --text-dark: #1A1A1A;
+            --text-gray: #666666;
+            --bg-color: #FAFAFA;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-text i { color: var(--primary-blue); }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--light-blue);
+            border-radius: 20px;
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-blue);
+        }
+
+        .hero-content p {
+            color: var(--text-gray);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .btn-primary:hover { opacity: 0.9; }
+
+        /* Social Icons Top */
+        .social-top {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .social-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .fb-bg { background-color: #1877F2; }
+        .tg-bg { background-color: #229ED9; }
+        .tk-bg { background-color: #000000; }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 15px;
+        }
+
+        /* Apps Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .app-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: flex;
+            gap: 20px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .app-details h3 { font-size: 18px; margin-bottom: 5px; }
+        .app-category { font-size: 13px; color: var(--primary-blue); font-weight: 500; }
+        .app-stats { font-size: 13px; color: var(--text-gray); margin: 8px 0; }
+        .app-stats i { color: #FFC107; }
+        .app-desc { font-size: 14px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.5; }
+        
+        .view-store {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Contact Section (Moved Above Team) */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .contact-info h3 { font-size: 18px; margin-bottom: 10px; }
+        .contact-info p { font-size: 14px; color: var(--text-gray); margin-bottom: 5px; }
+        .contact-info a { color: var(--primary-blue); text-decoration: none; font-weight: 500;}
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .team-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+        }
+
+        .team-img {
+            width: 80px;
+            height: 80px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+        }
+
+        .team-card h3 { font-size: 18px; }
+        .team-card .role { font-size: 13px; color: var(--primary-blue); font-weight: 500; margin-bottom: 15px; display: block;}
+        .team-card p { font-size: 13px; color: var(--text-gray); margin-bottom: 20px; }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .team-social a { color: var(--text-gray); font-size: 18px; transition: 0.3s; }
+        .team-social a:hover { color: var(--primary-blue); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 0 30px;
+            border-top: 1px solid #eee;
+        }
+        footer .logo-text { justify-content: center; margin-bottom: 15px; }
+        footer p { color: var(--text-gray); font-size: 15px; max-width: 400px; margin: 0 auto 20px; }
+        .footer-social { margin-bottom: 20px; display: flex; justify-content: center; gap: 15px;}
+        .footer-social a {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none; font-size: 18px;
+        }
+        .copyright { font-size: 13px; color: #999; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 20px; }
+            .hero-content h1 { font-size: 36px; }
+            .apps-grid, .team-grid, .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 🌐 Official Social Media -->
-    <section id="social-media">
-        <h2>Follow Us</h2>
-        <a href="https://facebook.com/imyantech">Facebook</a> | 
-        <a href="https://t.me/imyantech">Telegram</a> | 
-        <a href="https://tiktok.com/@imyantech">TikTok</a>
-    </section>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-text"><i class="fa-solid fa-layer-group"></i> iMyanTech</div>
+        </header>
 
-    <!-- 📱 Apps Section -->
-    <section id="our-apps">
-        <h2>Our Applications</h2>
-        
-        <!-- App 1 (ဥပမာ - UniPOS) -->
-        <div class="app-card">
-            <h3>UniPOS</h3>
-            <p>A smart point-of-sale system for your daily business needs.</p>
-            <!-- အောက်ပါ href တွင် Folder နာမည်ကို ထည့်ပေးရပါမည် -->
-            <a href="/app1-download">View Detail</a>
-        </div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Smart Solutions<br>For Your <span>Business</span></h1>
+                <p>Reliable, Fast & Easy to Use</p>
+                <a href="#our-apps" class="btn-primary">Explore Our Apps <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <!-- ပုံထဲက ဖုန်းပုံနေရာအတွက် နေရာချန်ထားခြင်းဖြစ်သည် -->
+            <div class="hero-image">
+               <!-- <img src="images/hero-phones.png" alt="App Mockup" style="max-width: 300px;"> -->
+            </div>
+        </section>
 
-        <!-- App 2 (ဥပမာ - MyParcel) -->
-        <div class="app-card">
-            <h3>MyParcel</h3>
-            <p>Reliable and fast delivery tracking application.</p>
-            <!-- အောက်ပါ href တွင် Folder နာမည်ကို ထည့်ပေးရပါမည် -->
-            <a href="/app2-download">View Detail</a>
-        </div>
-    </section>
+        <!-- Social Media Top -->
+        <section class="social-top">
+            <a href="https://facebook.com/imyantech" class="social-circle fb-bg"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://t.me/imyantech" class="social-circle tg-bg"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://tiktok.com/@imyantech" class="social-circle tk-bg"><i class="fa-brands fa-tiktok"></i></a>
+        </section>
 
-    <!-- 👨‍💻 Team Section -->
-    <section id="team">
-        <h2>iMyanTech Team</h2>
-        <p><strong>Name:</strong> MgMg</p>
-        <p><strong>Role:</strong> Lead Android Developer</p>
-    </section>
+        <!-- Our Applications -->
+        <section id="our-apps">
+            <div class="section-title">
+                <h2>Our Applications</h2>
+                <p>Explore our apps designed to make your business and daily life easier.</p>
+            </div>
+            
+            <div class="apps-grid">
+                <!-- App 1 -->
+                <div class="app-card">
+                    <div class="app-icon" style="background: #10B981;"><i class="fa-solid fa-cash-register"></i></div>
+                    <div class="app-details">
+                        <h3>UniPOS</h3>
+                        <span class="app-category">Business</span>
+                        <div class="app-stats"><i class="fa-solid fa-star"></i> 4.6 • 10K+ Downloads</div>
+                        <p class="app-desc">A smart point-of-sale system for managing sales, products, stock and reports.</p>
+                        <!-- Vercel Routing အတိုင်း Link ချိတ်ထားပါသည် -->
+                        <a href="/uni-pos" class="view-store"><i class="fa-brands fa-google-play"></i> View Detail</a>
+                    </div>
+                </div>
 
-    <!-- 📞 Contact Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        
-        <h3>Sales</h3>
-        <p>Telegram: <a href="https://t.me/imyantech_sales">@imyantech_sales</a></p>
-        <p>Viber: +959 xxx xxx xxx</p>
+                <!-- App 2 -->
+                <div class="app-card">
+                    <div class="app-icon" style="background: #0056FF;"><i class="fa-solid fa-box"></i></div>
+                    <div class="app-details">
+                        <h3>MyParcel</h3>
+                        <span class="app-category">Productivity</span>
+                        <div class="app-stats"><i class="fa-solid fa-star"></i> 4.5 • 5K+ Downloads</div>
+                        <p class="app-desc">Reliable and fast delivery tracking application for your parcels in real-time.</p>
+                        <a href="/my-parcel" class="view-store"><i class="fa-brands fa-google-play"></i> View Detail</a>
+                    </div>
+                </div>
 
-        <h3>Developer</h3>
-        <p>Telegram: <a href="https://t.me/imyantech_dev">@imyantech_dev</a></p>
-        <p>Viber: +959 xxx xxx xxx</p>
-    </section>
+                <!-- App 3 -->
+                <div class="app-card">
+                    <div class="app-icon" style="background: #6366F1;"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="app-details">
+                        <h3>MyWallet</h3>
+                        <span class="app-category">Finance</span>
+                        <div class="app-stats"><i class="fa-solid fa-star"></i> 4.4 • 3K+ Downloads</div>
+                        <p class="app-desc">Manage your finances easily and securely in one place.</p>
+                        <a href="/my-wallet" class="view-store"><i class="fa-brands fa-google-play"></i> View Detail</a>
+                    </div>
+                </div>
+
+                <!-- App 4 -->
+                <div class="app-card">
+                    <div class="app-icon" style="background: #F97316;"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <div class="app-details">
+                        <h3>MyInventory</h3>
+                        <span class="app-category">Business</span>
+                        <div class="app-stats"><i class="fa-solid fa-star"></i> 4.3 • 2K+ Downloads</div>
+                        <p class="app-desc">Simple inventory management for stock tracking and reporting.</p>
+                        <a href="/my-inventory" class="view-store"><i class="fa-brands fa-google-play"></i> View Detail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us (Moved Above Our Team) -->
+        <section id="contact">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>We're here to help. Reach out to the right person.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <!-- Sales -->
+                <div class="contact-card">
+                    <div class="contact-icon" style="color: #10B981; background: #E6F7F1;"><i class="fa-solid fa-headset"></i></div>
+                    <div class="contact-info">
+                        <h3>Sales</h3>
+                        <p>Telegram: <a href="https://t.me/imyantech_sales">@imyantech_sales</a></p>
+                        <p>Viber: +959 xxx xxx xxx</p>
+                    </div>
+                </div>
+
+                <!-- Developer -->
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fa-solid fa-code"></i></div>
+                    <div class="contact-info">
+                        <h3>Developer</h3>
+                        <p>Telegram: <a href="https://t.me/imyantech_dev">@imyantech_dev</a></p>
+                        <p>Viber: +959 xxx xxx xxx</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team (Moved Below Contact Us) -->
+        <section id="team">
+            <div class="section-title">
+                <h2>Our Team</h2>
+                <p>Meet the people behind iMyanTech.</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Developer (လူကြီးမင်းတောင်းဆိုထားသော အချက်အလက်အတိုင်း) -->
+                <div class="team-card">
+                    <!-- ပုံမရှိပါက ui-avatars.com မှ အလိုအလျောက် ပုံထုတ်ပေးသော လင့်ခ်သုံးထားပါသည် -->
+                    <img src="https://ui-avatars.com/api/?name=Mg+Mg&background=f0f6ff&color=0056FF" alt="Mg Mg" class="team-img">
+                    <h3>Mg Mg</h3>
+                    <span class="role">Lead Android Developer</span>
+                    <p>Passionate about creating innovative solutions and building reliable software that helps businesses grow.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                        <a href="#"><i class="fa-regular fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Sales -->
+                <div class="team-card">
+                    <img src="https://ui-avatars.com/api/?name=Min+Min&background=f0f6ff&color=0056FF" alt="Min Min" class="team-img">
+                    <h3>Min Min</h3>
+                    <span class="role">Sales & Marketing</span>
+                    <p>Focus on building strong relationships with clients and delivering the best solutions.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#"><i class="fa-solid fa-phone"></i></a>
+                        <a href="#"><i class="fa-regular fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Designer -->
+                <div class="team-card">
+                    <img src="https://ui-avatars.com/api/?name=Kyaw+Kyaw&background=f0f6ff&color=0056FF" alt="Kyaw Kyaw" class="team-img">
+                    <h3>Kyaw Kyaw</h3>
+                    <span class="role">Graphics Designer</span>
+                    <p>Creative designer focused on crafting clean and impactful visuals for brands and products.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                        <a href="#"><i class="fa-brands fa-behance"></i></a>
+                        <a href="#"><i class="fa-regular fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="logo-text"><i class="fa-solid fa-layer-group"></i> iMyanTech</div>
+            <p>We build smart and reliable applications that help businesses grow and make everyday tasks easier.</p>
+            
+            <div class="footer-social">
+                <a href="https://facebook.com/imyantech" class="fb-bg"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://t.me/imyantech" class="tg-bg"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://tiktok.com/@imyantech" class="tk-bg"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2026 iMyanTech. All rights reserved.
+            </div>
+        </footer>
+    </div>
 
 </body>
 </html>
