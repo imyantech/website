@@ -52,20 +52,20 @@
             color: var(--text-dark);
             display: flex;
             align-items: center;
-            gap: 10px; /* စာသားနှင့် ပုံကြား အကွာအဝေး */
+            gap: 10px;
         }
         
         .header-logo-img {
-            height: 35px; /* Logo ပုံ အမြင့် */
+            height: 35px;
             width: auto;
             object-fit: contain;
         }
 
-        /* Image Slider Styles (အသစ်) */
+        /* Image Slider Styles */
         .hero-slider {
             position: relative;
             max-width: 100%;
-            height: 400px; /* Slider အမြင့် */
+            height: 400px;
             border-radius: 20px;
             overflow: hidden;
             margin-bottom: 50px;
@@ -87,7 +87,7 @@
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* ပုံမပြဲဘဲ နေရာအပြည့်ယူရန် */
+            object-fit: cover;
         }
 
         /* Slider Navigation */
@@ -146,7 +146,7 @@
             border-radius: 10px;
         }
 
-        /* Social Icons (Dropbox Images) */
+        /* Social Icons */
         .social-top {
             display: flex;
             justify-content: center;
@@ -199,7 +199,6 @@
             border: 1px solid #f0f0f0;
         }
 
-        /* App Icon ကို Dropbox ပုံပြောင်းရန် CSS */
         .app-custom-img {
             width: 75px;
             height: 75px;
@@ -213,7 +212,14 @@
         .app-category { font-size: 13px; color: var(--primary-blue); font-weight: 500; }
         .app-desc { font-size: 14px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.5; margin-top: 8px; }
         
-        .view-store {
+        /* App Actions (Download & Website links) */
+        .app-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .view-store, .view-website {
             color: var(--primary-blue);
             text-decoration: none;
             font-size: 14px;
@@ -287,14 +293,6 @@
         .team-card .role { font-size: 13px; color: var(--primary-blue); font-weight: 500; margin-bottom: 15px; display: block;}
         .team-card p { font-size: 13px; color: var(--text-gray); margin-bottom: 20px; }
         
-        .team-social {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .team-social a { color: var(--text-gray); font-size: 18px; transition: 0.3s; }
-        .team-social a:hover { color: var(--primary-blue); }
-
         /* Footer */
         footer {
             text-align: center;
@@ -329,7 +327,7 @@
 <body>
 
     <div class="container">
-        <!-- Header (Logo ပုံကို ညာဘက်တွင်ထည့်ထားပါသည်) -->
+        <!-- Header -->
         <header>
             <div class="logo-text">
                 iMyanTech
@@ -340,19 +338,16 @@
         <!-- Image Slider Section -->
         <section class="hero-slider">
             <div class="slides">
-                <!-- ပုံ ၃ ပုံအတွက် Dropbox လင့်ခ်များ ထည့်ရန် -->
                 <div class="slide"><img src="YOUR_SLIDER_IMAGE_1_DROPBOX_LINK?raw=1" alt="Slider 1"></div>
                 <div class="slide"><img src="YOUR_SLIDER_IMAGE_2_DROPBOX_LINK?raw=1" alt="Slider 2"></div>
                 <div class="slide"><img src="YOUR_SLIDER_IMAGE_3_DROPBOX_LINK?raw=1" alt="Slider 3"></div>
             </div>
             
-            <!-- ဘယ်/ညာ ရွှေ့ရန် Button များ -->
             <div class="slider-nav">
                 <button onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
                 <button onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
             
-            <!-- အောက်ခြေမှ အစက်လေးများ -->
             <div class="slider-dots">
                 <span class="dot active" onclick="currentSlide(0)"></span>
                 <span class="dot" onclick="currentSlide(1)"></span>
@@ -360,7 +355,7 @@
             </div>
         </section>
 
-        <!-- Social Media Top (Dropbox Images) -->
+        <!-- Social Media Top -->
         <section class="social-top">
             <a href="https://facebook.com/imyantech">
                 <img src="https://www.dropbox.com/scl/fi/mb1g87tz77vxbsbcq74x2/facebook.png?rlkey=4bpa2112sbxpsvwhz1hai1vgl&st=mgvredb4&raw=1" alt="Facebook" class="custom-icon-img">
@@ -381,47 +376,59 @@
             </div>
             
             <div class="apps-grid">
-                <!-- App 1 (Dropbox Icon ပြောင်းထားပါသည်) -->
+                <!-- App 1 -->
                 <div class="app-card">
-                    <img src="https://www.dropbox.com/scl/fi/mlc1y9uodz6mlt55az3hf/crownpos.png?rlkey=yhy4l5ib18cyjv9qtu95f6btq&st=pzmjpb1i&raw=1" alt="UniPOS" class="app-custom-img">
+                    <img src="https://www.dropbox.com/scl/fi/mlc1y9uodz6mlt55az3hf/crownpos.png?rlkey=yhy4l5ib18cyjv9qtu95f6btq&st=pzmjpb1i&raw=1" alt="CrownPOS" class="app-custom-img">
                     <div class="app-details">
                         <h3>CrownPOS</h3>
                         <span class="app-category">Business</span>
                         <p class="app-desc">A smart point-of-sale system for managing sales, products, stock and reports.</p>
-                        <a href="/uni-pos" class="view-store"><i class="fa-brands fa-google-play"></i>Download</a>
+                        <div class="app-actions">
+                            <a href="/uni-pos" class="view-store"><i class="fa-brands fa-google-play"></i>Download</a>
+                            <a href="#" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- App 2 (Dropbox Icon ပြောင်းထားပါသည်) -->
+                <!-- App 2 -->
                 <div class="app-card">
                     <img src="https://www.dropbox.com/scl/fi/lrj1bizh131mxzmc3ggt7/myparcel.png?rlkey=i5wb0qmn56s9twcnm4jd190ih&st=saqq2vv0&raw=1" alt="MyParcel" class="app-custom-img">
                     <div class="app-details">
                         <h3>MyParcel</h3>
                         <span class="app-category">Productivity</span>
                         <p class="app-desc">Reliable and fast delivery tracking application for your parcels in real-time.</p>
-                        <a href="/my-parcel" class="view-store"><i class="fa-brands fa-google-play"></i>Download</a>
+                        <div class="app-actions">
+                            <a href="/my-parcel" class="view-store"><i class="fa-brands fa-google-play"></i>Download</a>
+                            <a href="#" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- App 3 (Dropbox Icon ပြောင်းထားပါသည်) -->
+                <!-- App 3 -->
                 <div class="app-card">
                     <img src="https://www.dropbox.com/scl/fi/x1x0n9upxikg6teb1saj7/projecta.jpg?rlkey=mkbn24qzhee4vcsu9s85zx3e0&st=psp7bhpz&raw=1" alt="Project A" class="app-custom-img">
                     <div class="app-details">
                         <h3>Project A</h3>
                         <span class="app-category">Unknown</span>
                         <p class="app-desc">Coming Soon.</p>
-                        <a href="/my-wallet" class="view-store"><i class="fa-brands fa-google-play"></i>Unknown</a>
+                        <div class="app-actions">
+                            <a href="/my-wallet" class="view-store"><i class="fa-brands fa-google-play"></i>Unknown</a>
+                            <a href="#" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- App 4 (Dropbox Icon ပြောင်းထားပါသည်) -->
+                <!-- App 4 -->
                 <div class="app-card">
                     <img src="https://www.dropbox.com/scl/fi/i90alc0nlgsdojo05h19c/projectb.jpg?rlkey=r4a24lxpjnihe0r8gji9klwhb&st=alstopxm&raw=1" alt="Project B" class="app-custom-img">
                     <div class="app-details">
                         <h3>Project B</h3>
                         <span class="app-category">Unknown</span>
                         <p class="app-desc">Coming Soon.</p>
-                        <a href="/my-inventory" class="view-store"><i class="fa-brands fa-google-play"></i>Unknown</a>
+                        <div class="app-actions">
+                            <a href="/my-inventory" class="view-store"><i class="fa-brands fa-google-play"></i>Unknown</a>
+                            <a href="#" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -435,7 +442,6 @@
             </div>
             
             <div class="contact-grid">
-                <!-- Sales -->
                 <div class="contact-card">
                     <img src="https://www.dropbox.com/scl/fi/98tjcyronybjgzczfobux/sales.png?rlkey=01u9ioe4wax28a5jntan3l5hy&st=ck5iooby&raw=1" alt="Sales" class="contact-custom-img">
                     <div class="contact-info">
@@ -445,7 +451,6 @@
                     </div>
                 </div>
 
-                <!-- Developer -->
                 <div class="contact-card">
                     <img src="https://www.dropbox.com/scl/fi/cfr4ocqvqd962upctrvfu/dev.png?rlkey=5j3cr76lrzdvkpgt7832eqx3e&st=3x7a5mvl&raw=1" alt="Developer" class="contact-custom-img">
                     <div class="contact-info">
@@ -466,39 +471,37 @@
             
             <div class="team-grid">
                 <div class="team-card">
-                    <img src="https://www.dropbox.com/scl/fi/g11m714bya4oc3jpyfxpp/ksk.jpg?rlkey=2eevgp124zh7hkcx77bg7k22t&st=g48pu2tz&raw=1" alt="Mg Mg" class="team-img">
+                    <img src="https://www.dropbox.com/scl/fi/g11m714bya4oc3jpyfxpp/ksk.jpg?rlkey=2eevgp124zh7hkcx77bg7k22t&st=g48pu2tz&raw=1" alt="Kaung Sit Khaing" class="team-img">
                     <h3>Kaung Sit Khaing</h3>
                     <span class="role">Software Developer</span>
-                    <p>Passionate about creating innovative solutions and building reliable software that helps businesses grow.</p>
+                    <p>Writing clean, efficient code to build seamless digital experiences and reliable software solutions.</p>
                 </div>
 
                 <div class="team-card">
-                    <img src="https://www.dropbox.com/scl/fi/r5d1m1dd0atz0vryy2731/whm.jpg?rlkey=6nttbz8pdqf5wnfcguhsiqp1e&st=ne062hvb&raw=1" alt="Min Min" class="team-img">
+                    <img src="https://www.dropbox.com/scl/fi/r5d1m1dd0atz0vryy2731/whm.jpg?rlkey=6nttbz8pdqf5wnfcguhsiqp1e&st=ne062hvb&raw=1" alt="Wai Hlian Min" class="team-img">
                     <h3>Wai Hlian Min</h3>
                     <span class="role">Sales & Marketing</span>
-                    <p>Focus on building strong relationships with clients and delivering the best solutions.</p>
+                    <p>Focused on building strong relationships with clients and delivering the best solutions.</p>
                 </div>
 
                 <div class="team-card">
-                    <img src="https://www.dropbox.com/scl/fi/3lcuqna3wucuvcewgicpe/lhk.jpg?rlkey=wtyzdeth8sctk07sxdfmhbj8s&st=nuax3esj&raw=1" alt="Kyaw Kyaw" class="team-img">
+                    <img src="https://www.dropbox.com/scl/fi/3lcuqna3wucuvcewgicpe/lhk.jpg?rlkey=wtyzdeth8sctk07sxdfmhbj8s&st=nuax3esj&raw=1" alt="Lwin Htet Aung" class="team-img">
                     <h3>Lwin Htet Aung</h3>
                     <span class="role">Graphics Designer</span>
                     <p>Creative designer focused on crafting clean and impactful visuals for brands and products.</p>
                 </div>
 
                  <div class="team-card">
-                    <img src="https://www.dropbox.com/scl/fi/gghz59ib4p9ij6u0ohyoh/snk.png?rlkey=16j4gbbrsirci7cua8xvsixiz&st=wzhnc38y&raw=1" alt="Kyaw Kyaw" class="team-img">
+                    <img src="https://www.dropbox.com/scl/fi/gghz59ib4p9ij6u0ohyoh/snk.png?rlkey=16j4gbbrsirci7cua8xvsixiz&st=wzhnc38y&raw=1" alt="Sit Nyein Khaing" class="team-img">
                     <h3>Sit Nyein Khaing</h3>
                     <span class="role">QA & Product Advisor</span>
-                    <p>Creative designer focused on crafting clean and impactful visuals for brands and products.</p>
+                    <p>Dedicated to ensuring top-notch product quality and providing strategic insights for an optimal user experience.</p>
                 </div>
-                
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <!-- Footer Logo နေရာတွင်လည်း ပြင်ဆင်ထားပါသည် -->
             <div class="logo-text">
                 iMyanTech
             </div>
@@ -522,7 +525,7 @@
         </footer>
     </div>
 
-    <!-- Image Slider အတွက် Javascript ကုဒ် -->
+    <!-- Image Slider Script -->
     <script>
         let slideIndex = 0;
         const slides = document.querySelector('.slides');
@@ -550,7 +553,6 @@
             updateSlider();
         }
 
-        // အလိုအလျောက် ၅ စက္ကန့်တစ်ခါ ပုံပြောင်းရန်
         setInterval(nextSlide, 5000); 
     </script>
 
