@@ -61,89 +61,37 @@
             object-fit: contain;
         }
 
-        /* Image Slider Styles */
-        .hero-slider {
-            position: relative;
+        /* Company Description / Profile */
+        .company-profile {
+            text-align: center;
+            margin: 30px auto 40px;
+            max-width: 700px;
+            padding: 0 20px;
+        }
+        
+        .company-profile p {
+            font-size: 18px;
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Single Image Style (Replaced Slider) */
+        .hero-image {
             max-width: 100%;
-            height: 400px;
+            height: auto;
             border-radius: 20px;
             overflow: hidden;
             margin-bottom: 50px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            display: block;
+            aspect-ratio: 16 / 9; /* 2048x1152 ratio */
         }
-
-        .slides {
-            display: flex;
-            height: 100%;
-            width: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 100%;
-        }
-
-        .slide img {
+        
+        .hero-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        /* Slider Navigation */
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 20px;
-            pointer-events: none;
-        }
-
-        .slider-nav button {
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            pointer-events: all;
-            transition: 0.3s;
-            color: var(--text-dark);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .slider-nav button:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-
-        /* Slider Dots */
-        .slider-dots {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .dot.active {
-            background-color: var(--primary-blue);
-            width: 25px;
-            border-radius: 10px;
         }
 
         /* Social Icons */
@@ -235,6 +183,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-bottom: 60px;
+            justify-content: center; /* Center items if less than full width */
         }
 
         .contact-card {
@@ -246,6 +195,8 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            max-width: 400px;
+            margin: 0 auto; /* Center single card */
         }
 
         .contact-custom-img {
@@ -264,7 +215,7 @@
         /* Team Grid */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-bottom: 60px;
         }
@@ -289,9 +240,8 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
-        .team-card h3 { font-size: 18px; }
-        .team-card .role { font-size: 13px; color: var(--primary-blue); font-weight: 500; margin-bottom: 15px; display: block;}
-        .team-card p { font-size: 13px; color: var(--text-gray); margin-bottom: 20px; }
+        .team-card h3 { font-size: 18px; margin-bottom: 5px; }
+        .team-card .role { font-size: 13px; color: var(--primary-blue); font-weight: 500; }
         
         /* Footer */
         footer {
@@ -319,7 +269,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-slider { height: 250px; }
             .apps-grid, .team-grid, .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -335,24 +284,15 @@
             </div>
         </header>
 
-        <!-- Image Slider Section -->
-        <section class="hero-slider">
-            <div class="slides">
-                <div class="slide"><img src="YOUR_SLIDER_IMAGE_1_DROPBOX_LINK?raw=1" alt="Slider 1"></div>
-                <div class="slide"><img src="YOUR_SLIDER_IMAGE_2_DROPBOX_LINK?raw=1" alt="Slider 2"></div>
-                <div class="slide"><img src="YOUR_SLIDER_IMAGE_3_DROPBOX_LINK?raw=1" alt="Slider 3"></div>
-            </div>
-            
-            <div class="slider-nav">
-                <button onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
-                <button onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-            
-            <div class="slider-dots">
-                <span class="dot active" onclick="currentSlide(0)"></span>
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-            </div>
+        <!-- Company Profile -->
+        <section class="company-profile">
+            <p>Technology with purpose. iMyanTech creates simple, reliable apps that make everyday life safer and smarter.</p>
+        </section>
+
+        <!-- Hero Image (2048x1152 Ratio) -->
+        <section class="hero-image">
+            <!-- Replace YOUR_IMAGE_LINK with actual image link (e.g. from dropbox with ?raw=1) -->
+            <img src="YOUR_IMAGE_LINK" alt="iMyanTech Banner">
         </section>
 
         <!-- Social Media Top -->
@@ -376,35 +316,22 @@
             </div>
             
             <div class="apps-grid">
-                <!-- App 1 -->
+                <!-- MMEQ Alert -->
                 <div class="app-card">
-                    <img src="https://www.dropbox.com/scl/fi/mlc1y9uodz6mlt55az3hf/crownpos.png?rlkey=yhy4l5ib18cyjv9qtu95f6btq&st=pzmjpb1i&raw=1" alt="CrownPOS" class="app-custom-img">
+                    <!-- Added a placeholder icon for MMEQ Alert. Replace with actual icon link -->
+                    <img src="https://www.dropbox.com/scl/fi/6oiknxu7orlf4c9shb3rt/logo.png?rlkey=zllr5cau59eljqy46qtuc2alo&st=kaw9oqii&raw=1" alt="MM Earthquake Alert" class="app-custom-img">
                     <div class="app-details">
-                        <h3>CrownPOS</h3>
-                        <span class="app-category">Productivity</span>
-                        <p class="app-desc">A smart point-of-sale system for managing sales, products, stock and reports.</p>
+                        <h3>MM Earthquake Alert</h3>
+                        <span class="app-category">Weather</span>
+                        <p class="app-desc">Get instant earthquake alerts and track real-time seismic activities.</p>
                         <div class="app-actions">
-                            <a href="/uni-pos" class="view-store"><i class="fa-brands fa-google-play"></i>Download</a>
-                            <a href="#" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.imyantech.mmeqalert" target="_blank" class="view-store"><i class="fa-brands fa-google-play"></i>Download</a>
+                            <a href="https://mmeq-alert.imyantech.com" target="_blank" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- App 2 -->
-                <div class="app-card">
-                    <img src="https://www.dropbox.com/scl/fi/lrj1bizh131mxzmc3ggt7/myparcel.png?rlkey=i5wb0qmn56s9twcnm4jd190ih&st=saqq2vv0&raw=1" alt="MyParcel" class="app-custom-img">
-                    <div class="app-details">
-                        <h3>MyParcel</h3>
-                        <span class="app-category">Productivity</span>
-                        <p class="app-desc">Reliable and fast delivery tracking application for your parcels in real-time.</p>
-                        <div class="app-actions">
-                            <a href="https://play.google.com/store/apps/details?id=com.imyantech.myparcel" target="_blank" class="view-store"><i class="fa-brands fa-google-play"></i>Download</a>
-                            <a href="https://myparcel.imyantech.com" target="_blank" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- App 3 -->
+                <!-- Project A -->
                 <div class="app-card">
                     <img src="https://www.dropbox.com/scl/fi/x1x0n9upxikg6teb1saj7/projecta.jpg?rlkey=mkbn24qzhee4vcsu9s85zx3e0&st=psp7bhpz&raw=1" alt="Project A" class="app-custom-img">
                     <div class="app-details">
@@ -413,20 +340,6 @@
                         <p class="app-desc">Coming Soon.</p>
                         <div class="app-actions">
                             <a href="/my-wallet" class="view-store"><i class="fa-brands fa-google-play"></i>Unknown</a>
-                            <a href="#" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- App 4 -->
-                <div class="app-card">
-                    <img src="https://www.dropbox.com/scl/fi/i90alc0nlgsdojo05h19c/projectb.jpg?rlkey=r4a24lxpjnihe0r8gji9klwhb&st=alstopxm&raw=1" alt="Project B" class="app-custom-img">
-                    <div class="app-details">
-                        <h3>Project B</h3>
-                        <span class="app-category">Unknown</span>
-                        <p class="app-desc">Coming Soon.</p>
-                        <div class="app-actions">
-                            <a href="/my-inventory" class="view-store"><i class="fa-brands fa-google-play"></i>Unknown</a>
                             <a href="#" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
                         </div>
                     </div>
@@ -442,15 +355,6 @@
             </div>
             
             <div class="contact-grid">
-                <div class="contact-card">
-                    <img src="https://www.dropbox.com/scl/fi/98tjcyronybjgzczfobux/sales.png?rlkey=01u9ioe4wax28a5jntan3l5hy&st=ck5iooby&raw=1" alt="Sales" class="contact-custom-img">
-                    <div class="contact-info">
-                        <h3>Sales</h3>
-                        <p>Telegram: <a href="https://t.me/imyantech_sales">@imyantech_sales</a></p>
-                        <p>Viber: +959 773 304 309</p>
-                    </div>
-                </div>
-
                 <div class="contact-card">
                     <img src="https://www.dropbox.com/scl/fi/cfr4ocqvqd962upctrvfu/dev.png?rlkey=5j3cr76lrzdvkpgt7832eqx3e&st=3x7a5mvl&raw=1" alt="Developer" class="contact-custom-img">
                     <div class="contact-info">
@@ -474,28 +378,24 @@
                     <img src="https://www.dropbox.com/scl/fi/g11m714bya4oc3jpyfxpp/ksk.jpg?rlkey=2eevgp124zh7hkcx77bg7k22t&st=g48pu2tz&raw=1" alt="Kaung Sit Khaing" class="team-img">
                     <h3>Kaung Sit Khaing</h3>
                     <span class="role">Software Developer</span>
-                    <p>Writing clean, efficient code to build seamless digital experiences and reliable software solutions.</p>
                 </div>
 
                 <div class="team-card">
                     <img src="https://www.dropbox.com/scl/fi/r5d1m1dd0atz0vryy2731/whm.jpg?rlkey=6nttbz8pdqf5wnfcguhsiqp1e&st=ne062hvb&raw=1" alt="Wai Hlian Min" class="team-img">
                     <h3>Wai Hlian Min</h3>
                     <span class="role">Sales & Marketing</span>
-                    <p>Focused on building strong relationships with clients and delivering the best solutions.</p>
                 </div>
 
                 <div class="team-card">
                     <img src="https://www.dropbox.com/scl/fi/3lcuqna3wucuvcewgicpe/lhk.jpg?rlkey=wtyzdeth8sctk07sxdfmhbj8s&st=nuax3esj&raw=1" alt="Lwin Htet Aung" class="team-img">
                     <h3>Lwin Htet Aung</h3>
                     <span class="role">Graphics Designer</span>
-                    <p>Creative designer focused on crafting clean and impactful visuals for brands and products.</p>
                 </div>
 
                  <div class="team-card">
                     <img src="https://www.dropbox.com/scl/fi/gghz59ib4p9ij6u0ohyoh/snk.png?rlkey=16j4gbbrsirci7cua8xvsixiz&st=wzhnc38y&raw=1" alt="Sit Nyein Khaing" class="team-img">
                     <h3>Sit Nyein Khaing</h3>
                     <span class="role">QA & Product Advisor</span>
-                    <p>Dedicated to ensuring top-notch product quality and providing strategic insights for an optimal user experience.</p>
                 </div>
             </div>
         </section>
@@ -524,37 +424,6 @@
             </div>
         </footer>
     </div>
-
-    <!-- Image Slider Script -->
-    <script>
-        let slideIndex = 0;
-        const slides = document.querySelector('.slides');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = document.querySelectorAll('.slide').length;
-
-        function updateSlider() {
-            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[slideIndex].classList.add('active');
-        }
-
-        function nextSlide() {
-            slideIndex = (slideIndex + 1) % totalSlides;
-            updateSlider();
-        }
-
-        function prevSlide() {
-            slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        }
-
-        function currentSlide(n) {
-            slideIndex = n;
-            updateSlider();
-        }
-
-        setInterval(nextSlide, 5000); 
-    </script>
 
 </body>
 </html>
