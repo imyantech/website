@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/KaungSitKhaing",
+      "destination": "/kaungsitkhaing",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/xxxeq-api/:match*",
@@ -8,4 +15,3 @@
     }
   ]
 }
-
