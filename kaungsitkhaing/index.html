@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaung Sit Khaing - Founder & Lead Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0A58CA;
+            --primary-hover: #084298;
+            --bg-color: #FAFAFA;
+            --white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-gray: #666666;
+            --border-color: #EAEAEA;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.04);
+            --shadow-md: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        nav {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding: 60px 0;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .greeting {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero h2 {
+            font-size: 20px;
+            color: var(--text-gray);
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background: var(--white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-dark);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        .about, .skills, .projects {
+            padding: 60px 0;
+        }
+
+        .about p {
+            font-size: 17px;
+            color: var(--text-gray);
+            max-width: 800px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .project-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--text-gray);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: var(--bg-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-gray);
+            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 30px;
+            }
+            .hero h1 { font-size: 36px; }
+            .section-title::after { left: 50%; transform: translateX(-50%); }
+            .section-title { text-align: center; }
+            .social-links, .btn-group { justify-content: center; }
+            .about p { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container">
+        <a href="/" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Back to iMyanTech
+        </a>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-text">
+                <span class="greeting">Hello, I'm</span>
+                <h1>Kaung Sit Khaing</h1>
+                <h2>Founder & Lead Developer at iMyanTech</h2>
+                
+                <div class="social-links">
+                    <a href="#" class="social-btn"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://t.me/imyantech_dev" class="social-btn"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://facebook.com/imyantech" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+
+                <div class="btn-group">
+                    <a href="mailto:imyantech@gmail.com" class="btn btn-primary">Contact Me</a>
+                    <a href="#projects" class="btn btn-outline">View Work</a>
+                </div>
+            </div>
+            <img src="https://www.dropbox.com/scl/fi/g11m714bya4oc3jpyfxpp/ksk.jpg?rlkey=2eevgp124zh7hkcx77bg7k22t&st=xnck8k7w&raw=1" alt="Kaung Sit Khaing" class="hero-image">
+        </header>
+
+        <section class="about">
+            <h2 class="section-title">About Me</h2>
+            <p>I am a passionate Android Application Developer and the founder of iMyanTech. I specialize in building native Android applications, managing server infrastructure, and creating scalable software solutions that solve real-world problems. My goal is to build technology with purpose that makes everyday life safer and smarter.</p>
+        </section>
+
+        <section class="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">Android SDK</div>
+                <div class="skill-card">Java & Kotlin</div>
+                <div class="skill-card">Firebase</div>
+                <div class="skill-card">REST APIs</div>
+                <div class="skill-card">VPS Hosting</div>
+                <div class="skill-card">Nginx</div>
+                <div class="skill-card">UI/UX Design</div>
+                <div class="skill-card">Git & GitHub</div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <img src="https://www.dropbox.com/scl/fi/rcz5dvje3td2ptrjyld3w/mmeqal.png?rlkey=ddxud4ted0u30wqy790z9oqe3&st=ze8quec8&raw=1" alt="MM EQ Alert" class="project-icon">
+                    <h3>MM Earthquake Alert</h3>
+                    <p>A real-time earthquake tracking application providing instant alerts for seismic activities across Myanmar and globally.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android SDK</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">API Integration</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon" style="background: var(--border-color); display:flex; align-items:center; justify-content:center; font-size:24px; color:var(--text-gray);">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <h3>MyParcel</h3>
+                    <p>A reliable logistics and delivery tracking system designed to streamline parcel management and rider operations.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Google Maps API</span>
+                        <span class="tech-tag">Thermal Printing</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon" style="background: var(--border-color); display:flex; align-items:center; justify-content:center; font-size:24px; color:var(--text-gray);">
+                        <i class="fa-solid fa-shop"></i>
+                    </div>
+                    <h3>CrownPOS</h3>
+                    <p>A smart point-of-sale system built for managing sales, inventory, and comprehensive reporting for businesses.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Database</span>
+                        <span class="tech-tag">UI/UX</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Kaung Sit Khaing. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
