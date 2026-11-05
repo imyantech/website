@@ -221,6 +221,8 @@
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -243,22 +245,36 @@
         .project-card p {
             color: var(--text-gray);
             font-size: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            flex-grow: 1;
         }
 
-        .tech-stack {
+        .project-links {
             display: flex;
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 8px;
+            margin-top: auto;
         }
 
-        .tech-tag {
+        .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
             background: var(--bg-color);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
             color: var(--primary-blue);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .project-link-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
         }
 
         footer {
@@ -301,8 +317,8 @@
                 
                 <div class="social-links">
                     <a href="#" class="social-btn"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://t.me/imyantech_dev" class="social-btn"><i class="fa-brands fa-telegram"></i></a>
-                    <a href="https://facebook.com/imyantech" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://t.me/urkai04" class="social-btn"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://www.facebook.com/iamurkai04" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
 
                 <div class="btn-group">
@@ -340,37 +356,13 @@
                     <img src="https://www.dropbox.com/scl/fi/rcz5dvje3td2ptrjyld3w/mmeqal.png?rlkey=ddxud4ted0u30wqy790z9oqe3&st=ze8quec8&raw=1" alt="MM EQ Alert" class="project-icon">
                     <h3>MM Earthquake Alert</h3>
                     <p>A real-time earthquake tracking application providing instant alerts for seismic activities across Myanmar and globally.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">Android SDK</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">API Integration</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon" style="background: var(--border-color); display:flex; align-items:center; justify-content:center; font-size:24px; color:var(--text-gray);">
-                        <i class="fa-solid fa-box"></i>
-                    </div>
-                    <h3>MyParcel</h3>
-                    <p>A reliable logistics and delivery tracking system designed to streamline parcel management and rider operations.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Kotlin</span>
-                        <span class="tech-tag">Google Maps API</span>
-                        <span class="tech-tag">Thermal Printing</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon" style="background: var(--border-color); display:flex; align-items:center; justify-content:center; font-size:24px; color:var(--text-gray);">
-                        <i class="fa-solid fa-shop"></i>
-                    </div>
-                    <h3>CrownPOS</h3>
-                    <p>A smart point-of-sale system built for managing sales, inventory, and comprehensive reporting for businesses.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Android</span>
-                        <span class="tech-tag">Database</span>
-                        <span class="tech-tag">UI/UX</span>
+                    <div class="project-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.imyantech.mmeqalert" target="_blank" class="project-link-btn">
+                            <i class="fa-brands fa-google-play"></i> Play Store
+                        </a>
+                        <a href="https://mmeq-alert.imyantech.com" target="_blank" class="project-link-btn">
+                            <i class="fa-solid fa-globe"></i> Website
+                        </a>
                     </div>
                 </div>
 
