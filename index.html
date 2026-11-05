@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iMyanTech</title>
+    <title>iMyanTech - Technology with Purpose</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -12,12 +12,17 @@
     <style>
         /* Global Styles */
         :root {
-            --primary-blue: #0056FF;
-            --light-blue: #F0F6FF;
-            --text-dark: #1A1A1A;
-            --text-gray: #666666;
-            --bg-color: #FAFAFA;
-            --white: #FFFFFF;
+            --primary-blue: #0A58CA;
+            --primary-hover: #084298;
+            --light-bg: #F8F9FA;
+            --text-dark: #212529;
+            --text-gray: #6C757D;
+            --bg-color: #FFFFFF;
+            --card-border: #E9ECEF;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -31,397 +36,590 @@
             background-color: var(--bg-color);
             color: var(--text-dark);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Header & Logo */
-        header {
-            padding: 20px 0;
+        /* Modern Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+            padding: 16px 0;
+        }
+
+        .nav-content {
             display: flex;
+            justify-content: space-between;
             align-items: center;
         }
-        
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
         .logo-text {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            letter-spacing: -0.5px;
         }
-        
+
         .header-logo-img {
-            height: 35px;
+            height: 32px;
             width: auto;
             object-fit: contain;
         }
 
-        /* Company Description / Profile */
-        .company-profile {
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 40px;
             text-align: center;
-            margin: 30px auto 40px;
-            max-width: 700px;
-            padding: 0 20px;
-        }
-        
-        .company-profile p {
-            font-size: 18px;
-            color: var(--text-dark);
-            font-weight: 500;
-            line-height: 1.5;
         }
 
-        /* Single Image Style (Replaced Slider) */
+        .company-profile {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .company-profile h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .company-profile p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-gray);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
         .hero-image {
             max-width: 100%;
-            height: auto;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
-            margin-bottom: 50px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            display: block;
-            aspect-ratio: 16 / 9; /* 2048x1152 ratio */
+            margin: 0 auto 60px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            background-color: var(--light-bg);
+            /* Maintain 16:9 Aspect Ratio */
+            aspect-ratio: 16 / 9;
         }
         
         .hero-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
-        /* Social Icons */
-        .social-top {
+        /* Social Icons - Sleeker Design */
+        .social-bar {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            font-size: 20px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-link img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Section Global Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
             margin-bottom: 50px;
         }
-        
-        .custom-icon-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-        .custom-icon-img:hover {
-            transform: scale(1.05);
+
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
 
-        /* Section Titles */
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .section-title h2 {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-        .section-title p {
+        .section-header p {
+            font-size: 16px;
             color: var(--text-gray);
-            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Apps Grid */
-        .apps-grid {
+        /* Products/Apps Grid */
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
-        .app-card {
+        /* Modern Card Design */
+        .card {
             background: var(--white);
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
             display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: transparent;
+        }
+
+        /* App Card Specifics */
+        .app-header {
+            display: flex;
+            align-items: center;
             gap: 20px;
-            border: 1px solid #f0f0f0;
+            margin-bottom: 20px;
         }
 
-        .app-custom-img {
-            width: 75px;
-            height: 75px;
-            border-radius: 16px;
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
             object-fit: cover;
-            flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-sm);
         }
 
-        .app-details h3 { font-size: 18px; margin-bottom: 5px; }
-        .app-category { font-size: 13px; color: var(--primary-blue); font-weight: 500; }
-        .app-desc { font-size: 14px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.5; margin-top: 8px; }
-        
-        /* App Actions (Download & Website links) */
+        .app-title-group h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .app-category {
+            font-size: 13px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .app-desc {
+            font-size: 15px;
+            color: var(--text-gray);
+            flex-grow: 1;
+            margin-bottom: 24px;
+        }
+
         .app-actions {
             display: flex;
-            gap: 20px;
-            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        
-        .view-store, .view-website {
-            color: var(--primary-blue);
-            text-decoration: none;
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
         }
 
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-            justify-content: center; /* Center items if less than full width */
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: 1px solid var(--primary-blue);
         }
 
-        .contact-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            max-width: 400px;
-            margin: 0 auto; /* Center single card */
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+            color: var(--white);
         }
 
-        .contact-custom-img {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            object-fit: cover;
-            flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid #E5E7EB;
         }
 
-        .contact-info h3 { font-size: 18px; margin-bottom: 10px; }
-        .contact-info p { font-size: 14px; color: var(--text-gray); margin-bottom: 5px; }
-        .contact-info a { color: var(--primary-blue); text-decoration: none; font-weight: 500;}
+        .btn-outline:hover {
+            background: var(--light-bg);
+            border-color: #D1D5DB;
+        }
 
-        /* Team Grid */
+        /* Team Section */
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         }
 
         .team-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #f0f0f0;
+            padding: 40px 20px;
         }
 
         .team-img {
-            width: 90px;
-            height: 90px;
-            background-color: #f0f6ff;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 15px;
+            margin: 0 auto 20px;
             object-fit: cover;
-            border: 3px solid var(--white);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border: 4px solid var(--light-bg);
+            box-shadow: var(--shadow-sm);
         }
 
-        .team-card h3 { font-size: 18px; margin-bottom: 5px; }
-        .team-card .role { font-size: 13px; color: var(--primary-blue); font-weight: 500; }
-        
+        .team-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .team-card .role {
+            font-size: 14px;
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+
+        .contact-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .contact-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .contact-link i {
+            width: 16px;
+            color: var(--primary-blue);
+        }
+
         /* Footer */
         footer {
-            text-align: center;
-            padding: 50px 0 30px;
-            border-top: 1px solid #eee;
+            background: var(--light-bg);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--card-border);
+            margin-top: 40px;
         }
-        footer .logo-text { justify-content: center; margin-bottom: 15px; }
-        footer p { color: var(--text-gray); font-size: 15px; max-width: 400px; margin: 0 auto 20px; }
-        
-        .footer-social { 
-            margin-bottom: 20px; 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px;
-        }
-        .footer-icon-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-        }
-        .copyright { font-size: 13px; color: #999; }
 
-        /* Responsive */
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            color: var(--text-gray);
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E7EB;
+            font-size: 14px;
+            color: #9CA3AF;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .apps-grid, .team-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero { padding: 40px 0 20px; }
+            .company-profile h1 { font-size: 28px; }
+            .section-header { margin-bottom: 30px; }
+            section { padding: 40px 0; }
+            
+            .contact-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .contact-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-header { flex-direction: column; text-align: center; }
+            .app-actions { justify-content: center; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo-container">
+                <img src="https://www.dropbox.com/scl/fi/rca7h8ctr7a0db3s2vdnk/logo.png?rlkey=h9e9n4qzow3x9e6k57ghlak81&st=haqz8gfr&raw=1" alt="iMyanTech Logo" class="header-logo-img">
+                <span class="logo-text">iMyanTech</span>
+            </a>
+        </div>
+    </nav>
+
     <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="logo-text">
-                iMyanTech
-                <img src="https://www.dropbox.com/scl/fi/rca7h8ctr7a0db3s2vdnk/logo.png?rlkey=h9e9n4qzow3x9e6k57ghlak81&st=haqz8gfr&raw=1" alt="Logo" class="header-logo-img">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="company-profile">
+                <h1>Technology with Purpose</h1>
+                <p>iMyanTech creates simple, reliable apps that make everyday life safer and smarter.</p>
             </div>
-        </header>
 
-        <!-- Company Profile -->
-        <section class="company-profile">
-            <p>Technology with purpose. iMyanTech creates simple, reliable apps that make everyday life safer and smarter.</p>
+            <!-- Main Banner Image -->
+            <div class="hero-image">
+                <img src="https://www.dropbox.com/scl/fi/kqiuenpm6anf26aesop15/background.jpg?rlkey=dtnax0b4ecgn4wl7b53bj6xzt&st=k3myb7a7&raw=1" alt="iMyanTech Banner">
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-bar">
+                <a href="https://facebook.com/imyantech" target="_blank" class="social-link" aria-label="Facebook">
+                     <img src="https://www.dropbox.com/scl/fi/mb1g87tz77vxbsbcq74x2/facebook.png?rlkey=4bpa2112sbxpsvwhz1hai1vgl&st=mgvredb4&raw=1" alt="Facebook">
+                </a>
+                <a href="https://t.me/imyantech" target="_blank" class="social-link" aria-label="Telegram">
+                    <img src="https://www.dropbox.com/scl/fi/zwuibbqvo80qogk3z0j8g/telegram.png?rlkey=krmah2kbl9ffdzca44e1a1ctu&st=op9ffzx1&raw=1" alt="Telegram">
+                </a>
+                <a href="https://tiktok.com/@imyantech" target="_blank" class="social-link" aria-label="TikTok">
+                    <img src="https://www.dropbox.com/scl/fi/50gko2mrc31a4ikrahlpq/tiktok.png?rlkey=8m1zux6g6gmuuce1smhov1lko&st=idop7x9n&raw=1" alt="TikTok">
+                </a>
+            </div>
         </section>
 
-        <!-- Hero Image (2048x1152 Ratio) -->
-        <section class="hero-image">
-            <img src="https://www.dropbox.com/scl/fi/kqiuenpm6anf26aesop15/background.jpg?rlkey=dtnax0b4ecgn4wl7b53bj6xzt&st=k3myb7a7&raw=1" alt="iMyanTech Banner">
-        </section>
-
-        <!-- Social Media Top -->
-        <section class="social-top">
-            <a href="https://facebook.com/imyantech">
-                <img src="https://www.dropbox.com/scl/fi/mb1g87tz77vxbsbcq74x2/facebook.png?rlkey=4bpa2112sbxpsvwhz1hai1vgl&st=mgvredb4&raw=1" alt="Facebook" class="custom-icon-img">
-            </a>
-            <a href="https://t.me/imyantech">
-                <img src="https://www.dropbox.com/scl/fi/zwuibbqvo80qogk3z0j8g/telegram.png?rlkey=krmah2kbl9ffdzca44e1a1ctu&st=op9ffzx1&raw=1" alt="Telegram" class="custom-icon-img">
-            </a>
-            <a href="https://tiktok.com/@imyantech">
-                <img src="https://www.dropbox.com/scl/fi/50gko2mrc31a4ikrahlpq/tiktok.png?rlkey=8m1zux6g6gmuuce1smhov1lko&st=idop7x9n&raw=1" alt="TikTok" class="custom-icon-img">
-            </a>
-        </section>
-
-        <!-- Our Applications -->
-        <section id="our-apps">
-            <div class="section-title">
-                <h2>Our Applications</h2>
-                <p>Explore our apps designed to make your business and daily life easier.</p>
+        <!-- Products Section -->
+        <section id="products">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Explore our crafted applications designed for efficiency and safety.</p>
             </div>
             
-            <div class="apps-grid">
-                <!-- MMEQ Alert -->
-                <div class="app-card">
-                    <img src="https://www.dropbox.com/scl/fi/rcz5dvje3td2ptrjyld3w/mmeqal.png?rlkey=ddxud4ted0u30wqy790z9oqe3&st=ze8quec8&raw=1" alt="MM Earthquake Alert" class="app-custom-img">
-                    <div class="app-details">
-                        <h3>MM Earthquake Alert</h3>
-                        <span class="app-category">Weather</span>
-                        <p class="app-desc">Get instant earthquake alerts and track real-time seismic activities.</p>
-                        <div class="app-actions">
-                            <a href="https://play.google.com/store/apps/details?id=com.imyantech.mmeqalert" target="_blank" class="view-store"><i class="fa-brands fa-google-play"></i>Download</a>
-                            <a href="https://mmeq-alert.imyantech.com" target="_blank" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
+            <div class="grid-container">
+                <!-- MM Earthquake Alert -->
+                <div class="card">
+                    <div class="app-header">
+                        <img src="https://www.dropbox.com/scl/fi/rcz5dvje3td2ptrjyld3w/mmeqal.png?rlkey=ddxud4ted0u30wqy790z9oqe3&st=ze8quec8&raw=1" alt="MM Earthquake Alert Icon" class="app-icon">
+                        <div class="app-title-group">
+                            <h3>MM Earthquake Alert</h3>
+                            <span class="app-category">Safety & Utility</span>
                         </div>
+                    </div>
+                    <p class="app-desc">Stay informed with instant earthquake alerts and track real-time seismic activities across Myanmar and globally.</p>
+                    <div class="app-actions">
+                        <a href="https://play.google.com/store/apps/details?id=com.imyantech.mmeqalert" target="_blank" class="btn btn-primary">
+                            <i class="fa-brands fa-google-play"></i> Get App
+                        </a>
+                        <a href="https://mmeq-alert.imyantech.com" target="_blank" class="btn btn-outline">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Web Version
+                        </a>
                     </div>
                 </div>
 
                 <!-- Project A -->
-                <div class="app-card">
-                    <img src="https://www.dropbox.com/scl/fi/x1x0n9upxikg6teb1saj7/projecta.jpg?rlkey=mkbn24qzhee4vcsu9s85zx3e0&st=psp7bhpz&raw=1" alt="Project A" class="app-custom-img">
-                    <div class="app-details">
-                        <h3>Project A</h3>
-                        <span class="app-category">Unknown</span>
-                        <p class="app-desc">Coming Soon.</p>
-                        <div class="app-actions">
-                            <a href="#" class="view-store"><i class="fa-brands fa-google-play"></i>Unknown</a>
-                            <a href="#" class="view-website"><i class="fa-solid fa-globe"></i>Website</a>
+                <div class="card">
+                    <div class="app-header">
+                        <img src="https://www.dropbox.com/scl/fi/x1x0n9upxikg6teb1saj7/projecta.jpg?rlkey=mkbn24qzhee4vcsu9s85zx3e0&st=psp7bhpz&raw=1" alt="Project A Icon" class="app-icon">
+                        <div class="app-title-group">
+                            <h3>Project A</h3>
+                            <span class="app-category">In Development</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Us -->
-        <section id="contact">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>We're here to help. Reach out to the right person.</p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <img src="https://www.dropbox.com/scl/fi/rca7h8ctr7a0db3s2vdnk/logo.png?rlkey=h9e9n4qzow3x9e6k57ghlak81&st=haqz8gfr&raw=1" alt="Support" class="contact-custom-img">
-                    <div class="contact-info">
-                        <h3>Support</h3>
-                        <p>Telegram: <a href="https://t.me/imyantech_dev">@imyantech_dev</a></p>
-                        <p>Viber: +959 750 461 944</p>
+                    <p class="app-desc">Our next big release is currently under development. Stay tuned for a new digital experience.</p>
+                    <div class="app-actions">
+                        <span class="btn btn-outline" style="cursor: not-allowed; opacity: 0.7;">
+                            Coming Soon
+                        </span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Our Team -->
+        <!-- Team Section -->
         <section id="team">
-            <div class="section-title">
-                <h2>Our Team</h2>
-                <p>Meet the people behind iMyanTech.</p>
+            <div class="section-header">
+                <h2>Meet The Team</h2>
+                <p>The dedicated minds driving innovation at iMyanTech.</p>
             </div>
             
-            <div class="team-grid">
-                <div class="team-card">
+            <div class="grid-container team-grid">
+                <div class="card team-card">
                     <img src="https://www.dropbox.com/scl/fi/g11m714bya4oc3jpyfxpp/ksk.jpg?rlkey=2eevgp124zh7hkcx77bg7k22t&st=xnck8k7w&raw=1" alt="Kaung Sit Khaing" class="team-img">
                     <h3>Kaung Sit Khaing</h3>
-                    <span class="role">Founder & Developer</span>
+                    <span class="role">Founder & Lead Developer</span>
                 </div>
 
-                <div class="team-card">
+                <div class="card team-card">
                     <img src="https://www.dropbox.com/scl/fi/r5d1m1dd0atz0vryy2731/whm.jpg?rlkey=6nttbz8pdqf5wnfcguhsiqp1e&st=ne062hvb&raw=1" alt="Wai Hlian Min" class="team-img">
                     <h3>Wai Hlian Min</h3>
                     <span class="role">Sales & Marketing</span>
                 </div>
 
-                <div class="team-card">
+                <div class="card team-card">
                     <img src="https://www.dropbox.com/scl/fi/3lcuqna3wucuvcewgicpe/lhk.jpg?rlkey=wtyzdeth8sctk07sxdfmhbj8s&st=nuax3esj&raw=1" alt="Lwin Htet Aung" class="team-img">
                     <h3>Lwin Htet Aung</h3>
-                    <span class="role">Graphics Designer</span>
+                    <span class="role">UI/UX Designer</span>
                 </div>
 
-                 <div class="team-card">
+                 <div class="card team-card">
                     <img src="https://www.dropbox.com/scl/fi/gghz59ib4p9ij6u0ohyoh/snk.png?rlkey=16j4gbbrsirci7cua8xvsixiz&st=wzhnc38y&raw=1" alt="Sit Nyein Khaing" class="team-img">
                     <h3>Sit Nyein Khaing</h3>
-                    <span class="role">QA & Product Advisor</span>
+                    <span class="role">Product Advisor</span>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer>
-            <div class="logo-text">
-                iMyanTech
-            </div>
-            <p>We build smart and reliable applications that help businesses grow and make everyday tasks easier.</p>
-            
-            <div class="footer-social">
-                <a href="https://facebook.com/imyantech">
-                    <img src="https://www.dropbox.com/scl/fi/mb1g87tz77vxbsbcq74x2/facebook.png?rlkey=4bpa2112sbxpsvwhz1hai1vgl&st=mgvredb4&raw=1" alt="Facebook" class="footer-icon-img">
-                </a>
-                <a href="https://t.me/imyantech">
-                    <img src="https://www.dropbox.com/scl/fi/zwuibbqvo80qogk3z0j8g/telegram.png?rlkey=krmah2kbl9ffdzca44e1a1ctu&st=op9ffzx1&raw=1" alt="Telegram" class="footer-icon-img">
-                </a>
-                <a href="https://tiktok.com/@imyantech">
-                    <img src="https://www.dropbox.com/scl/fi/50gko2mrc31a4ikrahlpq/tiktok.png?rlkey=8m1zux6g6gmuuce1smhov1lko&st=idop7x9n&raw=1" alt="TikTok" class="footer-icon-img">
-                </a>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Have questions or need support? We're here to help.</p>
             </div>
             
-            <div class="copyright">
+            <div class="card contact-card">
+                <div class="contact-icon">
+                    <img src="https://www.dropbox.com/scl/fi/rca7h8ctr7a0db3s2vdnk/logo.png?rlkey=h9e9n4qzow3x9e6k57ghlak81&st=haqz8gfr&raw=1" alt="Support Icon">
+                </div>
+                <div class="contact-info">
+                    <h3>Support & Inquiries</h3>
+                    <a href="https://t.me/imyantech_dev" target="_blank" class="contact-link">
+                        <i class="fa-brands fa-telegram"></i> @imyantech_dev
+                    </a>
+                    <a href="viber://chat?number=+959750461944" class="contact-link">
+                        <i class="fa-brands fa-viber"></i> +959 750 461 944
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">iMyanTech</div>
+                <p class="footer-desc">Building smart, reliable applications that empower businesses and enhance everyday life through purposeful technology.</p>
+                
+                <div class="social-bar" style="margin-bottom: 0; gap: 16px;">
+                    <a href="https://facebook.com/imyantech" target="_blank" class="social-link" style="width: 40px; height: 40px;">
+                        <img src="https://www.dropbox.com/scl/fi/mb1g87tz77vxbsbcq74x2/facebook.png?rlkey=4bpa2112sbxpsvwhz1hai1vgl&st=mgvredb4&raw=1" alt="Facebook">
+                    </a>
+                    <a href="https://t.me/imyantech" target="_blank" class="social-link" style="width: 40px; height: 40px;">
+                        <img src="https://www.dropbox.com/scl/fi/zwuibbqvo80qogk3z0j8g/telegram.png?rlkey=krmah2kbl9ffdzca44e1a1ctu&st=op9ffzx1&raw=1" alt="Telegram">
+                    </a>
+                    <a href="https://tiktok.com/@imyantech" target="_blank" class="social-link" style="width: 40px; height: 40px;">
+                        <img src="https://www.dropbox.com/scl/fi/50gko2mrc31a4ikrahlpq/tiktok.png?rlkey=8m1zux6g6gmuuce1smhov1lko&st=idop7x9n&raw=1" alt="TikTok">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
                 &copy; 2026 iMyanTech. All rights reserved.
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
 </body>
 </html>
