@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iMyanTech - Technology with Purpose</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Global Styles */
         :root {
             --primary-blue: #0A58CA;
             --primary-hover: #084298;
@@ -20,7 +17,7 @@
             --text-light: #9CA3AF;
             --bg-color: #FFFFFF;
             --card-border: #E9ECEF;
-            --footer-bg: #0F172A; /* Dark Footer like HOT */
+            --footer-bg: #0F172A;
             --footer-text: #CBD5E1;
             --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
@@ -48,7 +45,6 @@
             padding: 0 24px;
         }
 
-        /* Modern Navigation */
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -85,7 +81,6 @@
             object-fit: contain;
         }
 
-        /* Hero Section (Text Only - Clean) */
         .hero {
             padding: 80px 0 60px;
             text-align: center;
@@ -117,7 +112,6 @@
             margin: 0 auto;
         }
 
-        /* Section Global Styles */
         section {
             padding: 40px 0 60px;
         }
@@ -142,14 +136,12 @@
             margin: 0 auto;
         }
 
-        /* Products/Apps Grid */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
-        /* Modern Card Design */
         .card {
             background: var(--white);
             border-radius: 20px;
@@ -168,7 +160,6 @@
             border-color: transparent;
         }
 
-        /* App Card Specifics */
         .app-header {
             display: flex;
             align-items: center;
@@ -249,7 +240,6 @@
             border-color: #D1D5DB;
         }
 
-        /* Team Section */
         .team-grid {
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         }
@@ -282,7 +272,6 @@
             font-weight: 500;
         }
 
-        /* Contact Section */
         .contact-card {
             flex-direction: row;
             align-items: center;
@@ -337,7 +326,6 @@
             color: var(--primary-blue);
         }
 
-        /* Modern Dark Footer (HOT Protocol Style) */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
@@ -389,7 +377,6 @@
             text-align: center;
         }
 
-        /* Footer Bottom Bar */
         .footer-bottom {
             display: flex;
             justify-content: space-between;
@@ -406,18 +393,12 @@
             font-weight: 700;
             font-size: 20px;
         }
-        
-        .footer-brand img {
-            height: 28px;
-            filter: brightness(0) invert(1); /* Make logo white for dark bg */
-        }
 
         .copyright {
             color: var(--text-light);
             font-size: 14px;
         }
 
-        /* Responsive Design */
         @media (max-width: 992px) {
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -461,7 +442,6 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav>
         <div class="container nav-content">
             <a href="#" class="logo-container">
@@ -472,7 +452,6 @@
     </nav>
 
     <div class="container">
-        <!-- Hero Section (Clean Text Only) -->
         <section class="hero">
             <div class="company-profile">
                 <h1>Technology with Purpose</h1>
@@ -480,7 +459,6 @@
             </div>
         </section>
 
-        <!-- Products Section -->
         <section id="products">
             <div class="section-header">
                 <h2>Featured Products</h2>
@@ -488,7 +466,6 @@
             </div>
             
             <div class="grid-container">
-                <!-- MM Earthquake Alert -->
                 <div class="card">
                     <div class="app-header">
                         <img src="https://www.dropbox.com/scl/fi/rcz5dvje3td2ptrjyld3w/mmeqal.png?rlkey=ddxud4ted0u30wqy790z9oqe3&st=ze8quec8&raw=1" alt="MM Earthquake Alert Icon" class="app-icon">
@@ -508,7 +485,6 @@
                     </div>
                 </div>
 
-                <!-- Project A -->
                 <div class="card">
                     <div class="app-header">
                         <img src="https://www.dropbox.com/scl/fi/x1x0n9upxikg6teb1saj7/projecta.jpg?rlkey=mkbn24qzhee4vcsu9s85zx3e0&st=psp7bhpz&raw=1" alt="Project A Icon" class="app-icon">
@@ -527,7 +503,6 @@
             </div>
         </section>
 
-        <!-- Team Section -->
         <section id="team">
             <div class="section-header">
                 <h2>Meet The Team</h2>
@@ -535,11 +510,11 @@
             </div>
             
             <div class="grid-container team-grid">
-                <div class="card team-card">
+                <a href="/KaungSitKhaing" class="card team-card" style="text-decoration: none; color: inherit; display: block;">
                     <img src="https://www.dropbox.com/scl/fi/g11m714bya4oc3jpyfxpp/ksk.jpg?rlkey=2eevgp124zh7hkcx77bg7k22t&st=xnck8k7w&raw=1" alt="Kaung Sit Khaing" class="team-img">
                     <h3>Kaung Sit Khaing</h3>
                     <span class="role">Founder & Lead Developer</span>
-                </div>
+                </a>
 
                 <div class="card team-card">
                     <img src="https://www.dropbox.com/scl/fi/r5d1m1dd0atz0vryy2731/whm.jpg?rlkey=6nttbz8pdqf5wnfcguhsiqp1e&st=ne062hvb&raw=1" alt="Wai Hlian Min" class="team-img">
@@ -561,7 +536,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <div class="section-header">
                 <h2>Get in Touch</h2>
@@ -585,12 +559,10 @@
         </section>
     </div>
 
-    <!-- Modern Dark Footer (HOT Protocol Style) -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 
-                <!-- Services -->
                 <div class="footer-col">
                     <h4>What We Do</h4>
                     <ul>
@@ -602,7 +574,6 @@
                     </ul>
                 </div>
 
-                <!-- Products/Apps -->
                 <div class="footer-col">
                     <h4>Our Products</h4>
                     <ul>
@@ -612,7 +583,6 @@
                     </ul>
                 </div>
 
-                <!-- Community & Socials -->
                 <div class="footer-col">
                     <h4>Join Our Community</h4>
                     <ul>
@@ -622,7 +592,6 @@
                     </ul>
                 </div>
 
-                <!-- Support & Legal -->
                 <div class="footer-col">
                     <h4>Support & Legal</h4>
                     <ul>
@@ -634,10 +603,8 @@
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="footer-brand">
-                    <img src="https://www.dropbox.com/scl/fi/rca7h8ctr7a0db3s2vdnk/logo.png?rlkey=h9e9n4qzow3x9e6k57ghlak81&st=haqz8gfr&raw=1" alt="iMyanTech Logo">
                     iMyanTech
                 </div>
                 <div class="copyright">
